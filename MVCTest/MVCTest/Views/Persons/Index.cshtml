@@ -1,0 +1,61 @@
+﻿@model MVCTest.Models.PersonViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Edit")
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>
+           Photo
+        </th>
+        <th>EDIT</th>
+        <th>DETAILS</th>
+        <th>DELETE</th>
+    </tr>
+
+@foreach (var item in Model.Persons) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            <img src="~/Image/@item.ImgeURL" width="100" height="100" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { personId=item.PersonId }) 
+               
+        </td>
+        <td>@Html.ActionLink("Details", "Details", new { personId = item.PersonId }) 
+        </td>
+        <td>@Html.ActionLink("Delete", "Delete", new { personId = item.PersonId })</td>
+    </tr>
+}
+
+</table>

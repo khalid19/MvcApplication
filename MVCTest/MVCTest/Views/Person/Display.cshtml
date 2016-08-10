@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Display";
+}
+
+@{
+    Test3Entities db = new Test3Entities();
+}
+@using (Html.BeginForm())
+{
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>First name</th>
+                <th>Last name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in db.People)
+            {
+                <tr>
+                    <td><img src="~/Image/@item.imageUrl" width="100" height="100" /></td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Date</td>
+                    <td>@item.Salary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
